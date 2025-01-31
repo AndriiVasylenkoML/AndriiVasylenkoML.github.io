@@ -1,54 +1,26 @@
-Rewrite this HTML code using Maker in the load image:
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
-<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script></script>
-    <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-      }
-      #loading {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 1.5em;
-        color: white;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Loading message -->
-    <div id="loading">Loading AR...</div>
-
-    <!-- AR scene -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Marker-Based AR</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/jeromeetienne/ar.js/aframe/build/aframe-ar.min.js"></script>
+</head>
+<body style="margin : 0; overflow: hidden;">
+    <!-- AR Scene -->
     <a-scene embedded arjs>
-      <!-- Marker -->
-      <a-marker type="pattern" url="flower.patt">
-        <!-- 3D object -->
-        <!-- <a-box position="0 0.5 0" material="color: blue;"></a-box> -->
-
-        <a-entity 
-                gltf-model="flower.glb"
-                position="0 0 0"
-                scale="0.5 0.5 0.5"
-                rotation="0 180 0"
-                animation-mixer>
+        <!-- Marker using your pattern -->
+        <a-marker type="pattern" url="flower.patt">
+            <!-- 3D Model -->
+            <a-entity 
+                gltf-model="flower.glb" 
+                position="0 0 0" 
+                scale="0.5 0.5 0.5">
             </a-entity>
-      </a-marker>
-
-      <!-- Camera -->
-      <a-entity camera></a-entity>
+        </a-marker>
+        
+        <a-entity camera></a-entity>
     </a-scene>
-
-    <script>
-      // Remove loading message once AR scene is loaded
-      document.querySelector('a-scene').addEventListener('loaded', () => {
-        document.getElementById('loading').style.display = 'none';
-      });
-    </script>
-  </body>
+</body>
 </html>
-
